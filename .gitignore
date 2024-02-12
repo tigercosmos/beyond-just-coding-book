@@ -1,5 +1,5 @@
 .vscode
 *.o
 ch3/3-2/gdb-example/gdb_example
-ch3/3-3/perf-example/perf_sort_example
-ch3/3-3/perf-example/perf_unsort_example
+ch3/3-3/perf-example/sort
+ch3/3-3/perf-example/unsort

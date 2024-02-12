@@ -1,16 +1,19 @@
 CC = g++
-CFLAGS = -Wall -Wextra -g3 -O0 -std=c++11
+CFLAGS = -Wall -Wextra -g3 -std=c++17
 
-TARGET = perf_sort_example
-SRC = perf_sort_example.cpp
+TARGET_SORT = sort
+SRC_SORT = sort.cpp
 
-TARGET += perf_unsort_example
-SRC += perf_unsort_example.cpp
+TARGET_UNSORT += unsort
+SRC_UNSORT += unsort.cpp
 
-all: $(TARGET)
+all: $(TARGET_SORT) $(TARGET_UNSORT)
 
-$(TARGET): $(SRC)
+$(TARGET_SORT): $(SRC_SORT)
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(TARGET_UNSORT): $(SRC_UNSORT)
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	rm -f $(TARGET) perf.data*
+	rm -f $(TARGET_SORT) $(TARGET_UNSORT) perf.data*
