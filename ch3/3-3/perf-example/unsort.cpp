@@ -16,7 +16,7 @@ int main()
     for (int c = 0; c < arr_len; ++c)
         data[c] = std::rand() % 256;
 
-    // 不進行排序
+    // std::sort(data, data + arr_len); // 不進行排序
 
     long long sum = 0;
 
