@@ -1,5 +1,6 @@
 .vscode
 *.o
+ch1/simple-shell/shell
 ch3/3-2/gdb-example/gdb_example
 ch3/3-3/perf-example/sort
 ch3/3-3/perf-example/unsort
