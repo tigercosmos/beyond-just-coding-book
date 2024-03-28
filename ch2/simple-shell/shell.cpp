@@ -67,6 +67,7 @@ int main(int argc, char **argv)
                 dup2(pipe_fds[i * 2 + 1], STDOUT_FILENO);
             }
 
+            // Parent 跟 Child 都要關閉，避免其中一邊還開著 fd 導致程序無法結束
             if (i != 0)
             {
                 close(pipe_fds[(i - 1) * 2]);     // 前一個的寫
@@ -82,6 +83,7 @@ int main(int argc, char **argv)
         {
             // printf("- fork %d\n", pid);
 
+            // Parent 跟 Child 都要關閉，避免其中一邊還開著 fd 導致程序無法結束
             if (i != 0)
             {
                 close(pipe_fds[(i - 1) * 2]);     // 前一個的寫
