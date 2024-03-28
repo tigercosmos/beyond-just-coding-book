@@ -67,10 +67,10 @@ int main(int argc, char **argv)
                 dup2(pipe_fds[i * 2 + 1], STDOUT_FILENO);
             }
 
-            // 關掉之前一次打開的
-            for (int j = 0; j < (COMMAND_COUNT - 1) * 2; j++)
+            if (i != 0)
             {
-                close(pipe_fds[j]);
+                close(pipe_fds[(i - 1) * 2]);     // 前一個的寫
+                close(pipe_fds[(i - 1) * 2 + 1]); // 當前的讀
             }
 
             execvp(*cmds[i], cmds[i]); // 屬於 exec 系列的函數，會取代目前的 Process
