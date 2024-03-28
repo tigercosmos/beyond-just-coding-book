@@ -11,6 +11,7 @@
 
 int main(int argc, char **argv)
 {
+    /* 步驟一 */
     // 模擬剛開啟 Shell 的顯示提示符號
     std::cout << "$" << std::endl;
 
@@ -19,6 +20,7 @@ int main(int argc, char **argv)
     sigchld_action.sa_handler = SIG_DFL,
     sigchld_action.sa_flags = SA_NOCLDWAIT;
 
+    /* 步驟二 */
     // 模擬下達指令 ls | cat | cat | cat | cat | cat | cat | cat | cat
     std::cout << "$ ls | cat | cat | cat | cat | cat | cat | cat | cat" << std::endl;
 
@@ -88,6 +90,7 @@ int main(int argc, char **argv)
 
     waitpid(pid, NULL, 0); // 等最後一個指令結束
 
+    /* 步驟三 */
     // 模擬前一個命令結束之後，Shell 顯示提示符號
     std::cout << "$" << std::endl; 
 }
