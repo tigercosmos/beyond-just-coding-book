@@ -36,13 +36,15 @@ int main(int argc, char **argv)
     const char *p1_args[] = {ls_cmd, NULL};
     cmds[0] = const_cast<char **>(p1_args);
 
-    const char *p2_args[] = {cat_cmd, NULL}; // 只是 DEMO，所以重複利用，真實世界 Shell 會一個一個 Parse
+    const char *p2_args[] = {cat_cmd, NULL};
+
+    // 只是 DEMO，所以重複利用，真實世界 Shell 會一個一個 Parse
     for (int i = 1; i < COMMAND_COUNT; i++)
         cmds[i] = const_cast<char **>(p2_args);
 
-    int pipes[(COMMAND_COUNT - 1) * 2]; // 9 個指令，中間需要 8 條 pipe
+    int pipe_fds[(COMMAND_COUNT - 1) * 2]; // 8 個 Pipe，16 個 fd
     for (int i = 0; i < COMMAND_COUNT - 1; i++)
-        pipe(pipes + i * 2); // 建立 i-th pipe
+        pipe(pipe_fds + i * 2); // 建立 i-th pipe
 
     pid_t pid;
 
@@ -56,19 +58,19 @@ int main(int argc, char **argv)
             if (i != 0)
             {
                 // 用 dup2 將 pipe 讀取端取代成 stdin
-                dup2(pipes[(i - 1) * 2], STDIN_FILENO);
+                dup2(pipe_fds[(i - 1) * 2], STDIN_FILENO);
             }
 
             // 用 dup2 將 pipe 寫入端取代成 stdout
             if (i != COMMAND_COUNT - 1)
             {
-                dup2(pipes[i * 2 + 1], STDOUT_FILENO);
+                dup2(pipe_fds[i * 2 + 1], STDOUT_FILENO);
             }
 
             // 關掉之前一次打開的
             for (int j = 0; j < (COMMAND_COUNT - 1) * 2; j++)
             {
-                close(pipes[j]);
+                close(pipe_fds[j]);
             }
 
             execvp(*cmds[i], cmds[i]); // 屬於 exec 系列的函數，會取代目前的 Process
@@ -82,8 +84,8 @@ int main(int argc, char **argv)
 
             if (i != 0)
             {
-                close(pipes[(i - 1) * 2]);     // 前一個的寫
-                close(pipes[(i - 1) * 2 + 1]); // 當前的讀
+                close(pipe_fds[(i - 1) * 2]);     // 前一個的寫
+                close(pipe_fds[(i - 1) * 2 + 1]); // 當前的讀
             }
         }
     }
@@ -92,5 +94,5 @@ int main(int argc, char **argv)
 
     /* 步驟三 */
     // 模擬前一個命令結束之後，Shell 顯示提示符號
-    std::cout << "$" << std::endl; 
+    std::cout << "$" << std::endl;
 }
