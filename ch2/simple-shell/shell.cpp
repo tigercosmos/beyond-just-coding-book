@@ -54,19 +54,19 @@ int main(int argc, char **argv)
         pid = fork();
         if (pid == 0) // Child
         {
-            // 讀取端
             if (i != 0)
             {
-                // 用 dup2 將 pipe 讀取端取代成 stdin
+                // 用 dup2 將 pipe 輸出端複製成 stdin (fd=0)
                 dup2(pipe_fds[(i - 1) * 2], STDIN_FILENO);
             }
 
-            // 用 dup2 將 pipe 寫入端取代成 stdout
             if (i != COMMAND_COUNT - 1)
             {
+                // 用 dup2 將 pipe 讀取端複製成 stdout (fd=1)
                 dup2(pipe_fds[i * 2 + 1], STDOUT_FILENO);
             }
 
+            // 關閉 Pipe 開啟的 fd，因為此時 Pipe 兩端已經複製成 stdin 或 stdout
             // Parent 跟 Child 都要關閉，避免其中一邊還開著 fd 導致程序無法結束
             if (i != 0)
             {
@@ -83,7 +83,7 @@ int main(int argc, char **argv)
         {
             // printf("- fork %d\n", pid);
 
-            // Parent 跟 Child 都要關閉，避免其中一邊還開著 fd 導致程序無法結束
+            // 關閉開啟的 Pipe，Parent 跟 Child 都要關閉，避免其中一邊還開著 fd 導致程序無法結束
             if (i != 0)
             {
                 close(pipe_fds[(i - 1) * 2]);     // 前一個的寫
