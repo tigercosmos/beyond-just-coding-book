@@ -1,4 +1,5 @@
 .vscode
+build
 *.o
 ch2/simple-shell/shell
 ch2/echo/echo
