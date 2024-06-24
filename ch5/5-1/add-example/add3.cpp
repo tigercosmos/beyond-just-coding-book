@@ -1,11 +1,11 @@
 #include <iostream>
 
 template <typename T1, typename T2>
-float add(T1 a, T2 b)
+double add(T1 a, T2 b)
 {
     int sum_int = (a + b) * 100;
     int check_num = sum_int % 10;
-    float round = check_num >= 5 ? 0.1 : 0;
+    double round = check_num >= 5 ? 0.1 : 0;
     return (sum_int - check_num) / 100.0 + round;
 }
 
