@@ -3,10 +3,10 @@ class FooTest;
 class Foo
 {
 public:
-    int PublicSum(int a, int b);
+    int public_sum(int a, int b);
 
 private:
-    int _PrivateSum(int a, int b);
+    int private_sum(int a, int b);
 
-    friend FooTest;
+    friend FooTest; // for unit test
 };

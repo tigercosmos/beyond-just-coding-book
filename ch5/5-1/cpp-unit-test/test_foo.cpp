@@ -17,17 +17,17 @@ protected:
 
     int CallPrivateSum(int a, int b)
     {
-        return foo->_PrivateSum(a, b);
+        return foo->private_sum(a, b);
     }
 
     Foo *foo;
 };
 
 // 測試 Foo Public 可以直接使用 Foo
-TEST(Foo, PublicSum)
+TEST(Foo, public_sum)
 {
     Foo foo;
-    EXPECT_EQ(foo.PublicSum(1, 3), 4);
+    EXPECT_EQ(foo.public_sum(1, 3), 4);
 }
 
 // 測試 Foo Private 我們要使用 FooTest 的測試環境

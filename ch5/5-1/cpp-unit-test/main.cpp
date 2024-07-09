@@ -4,5 +4,5 @@
 int main()
 {
     Foo foo;
-    std::cout << foo.PublicSum(1, 3) << std::endl;
+    std::cout << foo.public_sum(1, 3) << std::endl;
 }
