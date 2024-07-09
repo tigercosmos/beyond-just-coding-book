@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(myproject)
 
+set(CMAKE_CXX_STANDARD 11)
+
 # 建立 foo 函示庫
 add_library(foo STATIC foo.cpp)
 

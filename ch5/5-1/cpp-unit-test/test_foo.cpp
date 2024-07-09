@@ -24,7 +24,7 @@ protected:
 };
 
 // 測試 Foo Public 可以直接使用 Foo
-TEST(Foo, public_sum)
+TEST(Foo_TestSet, test_public_sum)
 {
     Foo foo;
     EXPECT_EQ(foo.public_sum(1, 3), 4);
