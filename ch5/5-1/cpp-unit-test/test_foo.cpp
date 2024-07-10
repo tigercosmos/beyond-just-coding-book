@@ -31,7 +31,7 @@ TEST(Foo_TestSet, test_public_sum)
 }
 
 // 測試 Foo Private 我們要使用 FooTest 的測試環境
-TEST_F(FooTest, PrivateSum)
+TEST_F(FooTest, test_private_sum)
 {
     EXPECT_EQ(CallPrivateSum(3, 4), 7);
 }
