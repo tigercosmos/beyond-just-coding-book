@@ -1,6 +1,8 @@
 .vscode
 build
 *.o
+.pytest_cache
+__pycache__
 ch2/simple-shell/shell
 ch2/echo/echo
 ch3/3-2/gdb-example/gdb_example
