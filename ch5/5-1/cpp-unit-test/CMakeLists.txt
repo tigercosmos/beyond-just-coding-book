@@ -25,16 +25,25 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
+# 開啟 CMake 測試
+enable_testing()
+
 # 建立一個測試用的可執行檔 test_foo
 add_executable(test_foo test_foo.cpp)
 # 連結必要函示庫給 test_foo
 target_link_libraries(test_foo PRIVATE foo gtest gtest_main)
 
-# 開啟 CMake 測試
-enable_testing()
-
-# 把 test_foo 加進命名 my_project_test 的測試
+# 把 test_foo 加進命名 foo_unit_test 的測試
 add_test(
-    NAME my_project_test
+    NAME foo_unit_test
     COMMAND test_foo
+)
+
+# test_application 比照辦理
+add_executable(test_application test_application.cpp)
+# 多連結 gmock
+target_link_libraries(test_application PRIVATE foo gtest gmock gtest_main)
+add_test(
+    NAME application_unit_test
+    COMMAND test_application
 )
