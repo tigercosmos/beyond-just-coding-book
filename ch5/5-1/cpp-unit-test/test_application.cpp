@@ -57,9 +57,9 @@ TEST(ApplicationTest, ExecuteQueryTest)
 {
     MockDatabase mock_db;
 
-    EXPECT_CALL(mock_db, query(testing::_))
-        .Times(1)
-        .WillOnce(testing::Return(42));
+    EXPECT_CALL(mock_db, query(testing::_)) // 當 query 收到任意參數
+        .Times(1)                           // 預期只會被呼叫一次
+        .WillOnce(testing::Return(42));     // 回傳 42
 
     Application app(&mock_db);
     EXPECT_EQ(app.executeQuery("SELECT SUM(Cost) FROM Bills;"), 42);
