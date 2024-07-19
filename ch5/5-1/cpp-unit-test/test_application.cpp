@@ -45,10 +45,9 @@ TEST(ApplicationTest, InitializeTest)
 {
     MockDatabase mock_db;
 
-    // Set expectation
-    EXPECT_CALL(mock_db, connect("localhost"))
-        .Times(1)
-        .WillOnce(testing::Return(true));
+    EXPECT_CALL(mock_db, connect("localhost")) // 模擬 connect()
+        .Times(1)                              // 預期只會被呼叫一次
+        .WillOnce(testing::Return(true));      // 只會回傳一次 true
 
     Application app(&mock_db);
     EXPECT_TRUE(app.initialize("localhost"));
@@ -58,13 +57,12 @@ TEST(ApplicationTest, ExecuteQueryTest)
 {
     MockDatabase mock_db;
 
-    // Set expectation
     EXPECT_CALL(mock_db, query(testing::_))
         .Times(1)
         .WillOnce(testing::Return(42));
 
     Application app(&mock_db);
-    EXPECT_EQ(app.executeQuery("SELECT SUM(Quantity) FROM OrderDetails;"), 42);
+    EXPECT_EQ(app.executeQuery("SELECT SUM(Cost) FROM Bills;"), 42);
 }
 
 int main(int argc, char **argv)
