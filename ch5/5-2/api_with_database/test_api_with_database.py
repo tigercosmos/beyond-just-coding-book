@@ -24,7 +24,7 @@ def test_process_data_from_api(setup_database, setup_api_client):
     client = setup_api_client
 
     # 取得 API 資料並處理
-    api_data = client.fetch("https://api.example.com/data")
+    api_data = client.fetch("https://localhost:8888/api")
 
     # 驗證 API 資料
     assert "key" in api_data
