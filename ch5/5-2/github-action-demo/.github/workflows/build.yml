@@ -1,0 +1,19 @@
+name: Build
+run-name: Build the project on macOS and Ubuntu
+on: [push]
+jobs:
+  macOS:
+    runs-on: macos-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Run make build
+        run: make build
+
+  ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Run make build
+        run: make build
