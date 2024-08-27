@@ -1,0 +1,6 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM # 基於LLVM風格
+IndentWidth: 4 # 縮排為四個空白
+AllowShortFunctionsOnASingleLine: None # 不允許短函式縮減成一行
+PointerAlignment: Left # 指標靠左
