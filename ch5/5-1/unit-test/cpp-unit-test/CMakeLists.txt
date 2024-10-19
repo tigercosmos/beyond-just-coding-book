@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 # 建立 foo 函示庫
 add_library(foo STATIC foo.cpp)
 
-# 加入 include 資料夾給 foo.hpp
+# 加入 include 資料夾給 foo 函示庫
 target_include_directories(foo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 # 建立可執行檔 main
