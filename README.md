@@ -10,4 +10,4 @@ The official example code for the book "Beyond Just Coding: Five Essential Lesso
 **ISBN**： 978-626-414-034-8
 **出版社**： 博碩文化
 
-<img src="https://raw.githubusercontent.com/tigercosmos/blog/refs/heads/master/book_picture.jpg" alt="book" width="50%">
+<img src="https://raw.githubusercontent.com/tigercosmos/beyond-just-coding-book/refs/heads/master/book_picture.jpg" alt="book" width="50%">
