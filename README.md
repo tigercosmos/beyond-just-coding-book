@@ -4,7 +4,7 @@ The official example code for the book "Beyond Just Coding: Five Essential Lesso
 
 ## 書籍資訊 Book Information
 
-**中文名稱**: **程式設計原來不只有寫 CODE！銜接學校與職場的五堂軟體開發實習課
+**中文名稱**: 程式設計原來不只有寫 CODE！銜接學校與職場的五堂軟體開發實習課
 
 **English Name**: Beyond Just Coding: Five Essential Lessons from Classroom to Career in Software Development
 
