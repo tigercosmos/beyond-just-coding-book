@@ -14,7 +14,7 @@ The official example code for the book "Beyond Just Coding: Five Essential Lesso
 
 **出版社**： 博碩文化
 
-**書籍介紹**： [Click](https://tigercosmos.xyz/books/beyond-just-coding-book.html)
+**書籍資訊**： [Click](https://tigercosmos.xyz/books/beyond-just-coding-book.html) （包含試讀頁、線上公開文章、勘誤表、目錄等資訊）
 
 **購買**： [Click](https://tigercosmos.xyz/books/beyond-just-coding-book.html)
 
